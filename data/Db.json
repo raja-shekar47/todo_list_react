@@ -1,0 +1,19 @@
+{
+  "tasklist": [
+    {
+      "id": 1,
+      "task": "Programming React",
+      "checked": true
+    },
+    {
+      "id": 2,
+      "task": "Play Cricket",
+      "checked": false
+    },
+    {
+      "id": 3,
+      "task": "Swimming",
+      "checked": true
+    }
+  ]
+}
