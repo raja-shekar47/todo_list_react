@@ -11,50 +11,51 @@ export const TodoPageRenderer = (prop) => {
   const API_URL = "http://localhost:3500/tasklist";
 
   // const [taskList, setTaskList] = useState(() => JSON.parse(localStorage.getItem("taskList")) || []);
-  const [taskList, setTaskList] = useState([]);
+  // const [taskList, setTaskList] = useState([]);
   const [isFetchError, isSetFetchError] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
-  // const [taskList, setTaskList] = useState(
+  const [taskList, setTaskList] = useState(
 
-  //     [
-  //     {
-  //       id: 1,
-  //       task: "Programming React",
-  //       checked: true,
-  //     },
-  //     {
-  //       id: 2,
-  //       task: "Play Cricket",
-  //       checked: false,
-  //     },
-  //     {
-  //       id: 3,
-  //       task: "Swimming",
-  //       checked: true,
-  //     },
-  //     ]
-  //   );
+      [
+      {
+        id: 1,
+        task: "Programming React",
+        checked: true,
+      },
+      {
+        id: 2,
+        task: "Play Cricket",
+        checked: false,
+      },
+      {
+        id: 3,
+        task: "Swimming",
+        checked: true,
+      },
+      ]
+    );
   useEffect(() => {
-    const fetchItem = async () => {
-      try {
-        const responce = await fetch(API_URL);
-        if (!responce.ok) throw Error("Data not Receved");
-        const apiListItems = await responce.json();
-        setTaskList(apiListItems);
-        console.log("api task", apiListItems);
-        isSetFetchError(null);
-      } catch (err) {
-        isSetFetchError(err.message);
-      } finally {
-        setIsLoading(false);
-      }
-    };
+    // const fetchItem = async () => {
+    //   try {
+    //     const responce = await fetch(API_URL);
+    //     if (!responce.ok) throw Error("Data not Receved");
+    //     const apiListItems = await responce.json();
+    //     setTaskList(apiListItems);
+    //     console.log("api task", apiListItems);
+    //     isSetFetchError(null);
+    //   } catch (err) {
+    //     isSetFetchError(err.message);
+    //   } finally {
+    //     setIsLoading(false);
+    //   }
+    // };
 
-    setTimeout(() => {
-      (async () => await fetchItem())();
-    }, 3000);
+    // setTimeout(() => {
+    //   (async () => await fetchItem())();
+    // }, 3000);
   }, []);
+  console.log(taskList, "takslist")
 
   const handleOnChange = (id) => {
     const updatedTaskList = taskList.map((item) => {
