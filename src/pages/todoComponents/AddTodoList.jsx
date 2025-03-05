@@ -1,9 +1,26 @@
 import React from "react";
+import { useState } from "react";
 
-export const AddTodoList = ({ newItem, setNewItem, onSubmit }) => {
+const AddTodoList = ({ taskList, setTaskList }) => {
+  const [newTask, setNewTask] = useState(""); // ✅ Correct useState
+
+  const addNewTask = (e) => {
+    e.preventDefault(); // Prevent page reload
+    if (!newTask.trim()) return; // Prevent empty tasks
+
+    const newTaskList = {
+      id: taskList.length + 1,
+      task: newTask,
+      checked: false,
+    };
+
+    setTaskList([...taskList, newTaskList]); // Update task list
+    setNewTask(""); // Clear input field
+  };
+
   return (
     <div className="bg-blue-700 mb-8 my-5 p-3 py-4">
-      <form action="" className="bg-sky-500/100" onSubmit={onsubmit}>
+      <form action="" className="bg-sky-500/100" onSubmit={addNewTask}>
         <label className="text-white" htmlFor="addItem">
           Add Item{" "}
         </label>
@@ -13,18 +30,15 @@ export const AddTodoList = ({ newItem, setNewItem, onSubmit }) => {
           id="addItem"
           placeholder="Add Item"
           required
-          value={newItem}
-          onChange={(e) => setNewItem(e.target.value)}
+          value={newTask}
+          onChange={(e) => setNewTask(e.target.value)}
         />
-        <button
-          onClick={onSubmit}
-          className="text-white"
-          type="submit"
-          arie-label="add item"
-        >
+        <button className="text-white" type="submit" aria-label="add item">
           Add New List
         </button>
       </form>
     </div>
   );
 };
+
+export default AddTodoList;

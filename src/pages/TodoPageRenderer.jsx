@@ -1,11 +1,10 @@
 import React from "react";
+import { useState } from "react";
 
-import { useState, useEffect } from "react";
-import { AddTodoList } from "./todoComponents/AddTodoList";
 import { Footer } from "./todoComponents/Footer";
 import { Header } from "./todoComponents/Header";
-import { Todo } from "./todoComponents/Todo";
-import { SearchTask } from "./todoComponents/SearchTask";
+import { TaskList } from "./todoComponents/TaskList";
+import AddTodoList from "./todoComponents/AddTodoList";
 
 export const TodoPageRenderer = () => {
   const [taskList, setTaskList] = useState([
@@ -25,17 +24,14 @@ export const TodoPageRenderer = () => {
       checked: true,
     },
   ]);
+
   return (
-    <div>
-      {taskList.map((item) => (   
-        <ul key={item.id}>
-          <li className="d-flex">
-            <h4>{item.task}</h4>
-            <input type="checkbox" checked={item.checked}></input>
-            <button>Delete</button>
-          </li>
-        </ul>
-      ))}
+    <div className="w-[50%] mx-auto my-5 ">
+      <Header />
+      <AddTodoList taskList={taskList} setTaskList={setTaskList} />
+      <TaskList taskList={taskList} setTaskList={setTaskList} />
+
+      <Footer/>
     </div>
   );
 };
