@@ -30,7 +30,6 @@ export const TodoPageRenderer = () => {
       <Header />
       <AddTodoList taskList={taskList} setTaskList={setTaskList} />
       <TaskList taskList={taskList} setTaskList={setTaskList} />
-
       <Footer/>
     </div>
   );
