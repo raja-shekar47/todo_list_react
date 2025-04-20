@@ -1,5 +1,6 @@
 import React from "react";
 export const TaskList = ({ taskList, setTaskList }) => {
+
   // update the task in checkbox
   const handleCheck = (id) => {
     const updatedTaskList = taskList.map((task) =>
